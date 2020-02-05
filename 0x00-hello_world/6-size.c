@@ -1,11 +1,9 @@
 #include <stdio.h>
-
 /**
  * main - prints size of a file
  * Description: Prints almost every size that containts a file
  * Return: 0 at the end
  */
-
 int main(void)
 {
 	printf("Size of a char: %i byte(s)\n", sizeof(char));
@@ -15,4 +13,4 @@ int main(void)
 	printf("Size of a float: %i byte(s)\n", sizeof(float));
 	return (0);
 
-};
+}

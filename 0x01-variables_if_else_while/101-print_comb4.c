@@ -6,24 +6,24 @@
  */
 int main(void)
 {
-	int num1;
-	int num2;
-	int num3;
+	int a;
+	int b;
+	int c;
 
-	for (num1 = '0'; num1 <= '7'; num1++)
+	for (a = '0'; a <= '7'; a++)
 	{
-		for (num2 = num1 + 1; num2 <= '8'; num2++)
+		for (b = a + 1; b <= '8'; b++)
 		{
-			for (num3 = num2 + 1; num2 <= '9'; num3++)
+			for (c = b + 1; c <= '9'; c++)
 			{
-				if (num1 != num2 && num2 != num3 &&
-				    num1 != num3)
+				if (a != b && a != b &&
+				    b != c)
 				{
-					putchar(num1);
-					putchar(num2);
-					putchar(num3);
-					if (num1 != '7' || num2 != '8' ||
-					    num3 != '9')
+					putchar(a);
+					putchar(b);
+					putchar(c);
+					if (a != '7' || b != '8' ||
+					    c != '9')
 					{
 						putchar(',');
 						putchar(' ');

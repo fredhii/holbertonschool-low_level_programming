@@ -6,29 +6,29 @@
  */
 int main(void)
 {
-	int num1;
-	int num2;
-	int num3;
-	int num4;
+	int a;
+	int b;
+	int c;
+	int d;
 
-	for (num1 = '0'; num1 <= '9'; num1++)
+	for (a = '0'; a <= '9'; a++)
 	{
-		for (num2 = num1 + 1; num2 <= '9'; num2++)
+		for (b = '0'; b <= '9'; b++)
 		{
-			for (num3 = num2 + 1; num2 <= '9'; num3++)
+			for (c = '0'; c <= '9'; c++)
 			{
-				for (num4 = num3 + 1; num2 <= '9'; num4++)
+				for (d = '0'; d <= '9'; d++)
 				{
-					if (num1 != num2)
+					if (c >= a + 1 || d >= b + 1)
 					{
-						putchar(num1);
-						putchar(num2);
+						putchar(a);
+						putchar(b);
 						putchar(' ');
-						putchar(num3);
-						putchar(num4);
-						if (num1 != '9' || num2 != '8'
-						    ||num3 != '9' ||
-						    num4 != '9')
+						putchar(c);
+						putchar(d);
+						if (a != '9' || b != '8'
+						    ||c != '9' ||
+						    d != '9')
 						{
 							putchar(',');
 							putchar(' ');

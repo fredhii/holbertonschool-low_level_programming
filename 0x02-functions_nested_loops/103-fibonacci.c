@@ -18,7 +18,7 @@ int main(void)
 		a = b;
 		b = c;
 		if (c % 2 == 0 && c < 4000000)
-		        e += c;
+			e += c;
 	}
 	printf("%lu\n", e);
 	return (0);

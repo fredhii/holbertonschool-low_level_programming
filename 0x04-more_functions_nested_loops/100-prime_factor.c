@@ -15,7 +15,7 @@ int main(void)
 		if (num % i == 0)
 		{
 			printf("%ld\n", i);
-		        break;
+			break;
 		}
 	}
 	return (0);

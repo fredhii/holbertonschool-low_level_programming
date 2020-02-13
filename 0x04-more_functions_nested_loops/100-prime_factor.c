@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 /**
  * main - Prints bigger prime factor
  * Description: Lok for biggest prime factor of a number
@@ -9,11 +10,13 @@ int main(void)
 	long i;
 	long num = 612852475143;
 
-	for (i = 2; i < num; i++)
+	for (i = sqrt(num); i < num; i++)
 	{
 		if (num % i == 0)
-			num /= i;
+		{
+			printf("%ld\n", i);
+		        break;
+		}
 	}
-	printf("%ld\n", num);
 	return (0);
 }

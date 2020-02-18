@@ -13,22 +13,8 @@ int _atoi(char *s)
 
 	for (n = 0; *(s + n) != '\0'; n++)
 	{
-		if (*(s + n) == '-' && sign == 0)
-		{
-			sign = 1;
-		}
-		else if (*(s + n) == '-' && sign == 1)
-		{
-			sign = -1;
-		}
-		else if (*(s + n) == '+' && sign == 0)
-		{
-			sign = -1;
-		}
-		else if (*(s + n) == '+' && sign == 1)
-		{
-			sign = 1;
-		}
+		if (*(s + n) == '-')
+			sign *= -1;
 		if (*(s + n) >= '0' && *(s + n) <= '9')
 		{
 			i = *(s + n) - '0';

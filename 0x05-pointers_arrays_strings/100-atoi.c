@@ -9,7 +9,7 @@ int _atoi(char *s)
 	int i;
 	int n;
 	int sign = 1;
-	int res;
+	int res = 0;
 
 	for (n = 0; *(s + n) != '\0'; n++)
 	{
@@ -19,8 +19,7 @@ int _atoi(char *s)
 		{
 			i = *(s + n) - '0';
 			res = (res * 10) + i;
-
-			if (*(s + (n + 1)) < '0' || *(s + (n + 1)) > '9')
+			if (!(*(s + (n + 1)) >= '0' && *(s + (n + 1)) <= '9'))
 				break;
 		}
 	}

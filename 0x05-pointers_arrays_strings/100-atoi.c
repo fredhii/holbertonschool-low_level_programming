@@ -19,11 +19,11 @@ int _atoi(char *s)
 		}
 		else if (*(s + n) == '-' && sign == 1)
 		{
-			sign = 0;
+			sign = -1;
 		}
 		else if (*(s + n) == '+' && sign == 0)
 		{
-			sign = 0;
+			sign = -1;
 		}
 		else if (*(s + n) == '+' && sign == 1)
 		{
@@ -34,12 +34,8 @@ int _atoi(char *s)
 			i = *(s + n) - '0';
 			res = (res * 10) + i;
 			if (!(*(s + (n + 1)) >= '0' && *(s + (n + 1)) <= '9'))
-			{
-				if (sign == 0)
-					res *= -1;
 				break;
-			}
 		}
 	}
-	return (res);
+	return (res * sign);
 }

@@ -14,16 +14,10 @@ int _atoi(char *s)
 	{
 		if (*(s + n) == '-')
 			sign *= -1;
-		if ((*(s + n) >= '0' && *(s + n) <= '9') && *(s + n) != '\0')
-		{
+		if (*(s + n) >= '0' && *(s + n) <= '9')
 			res = res * 10 + (*(s + n) - '0');
-			if (!(*(s + (n + 1)) >= '0' && *(s + (n + 1)) <= '9'))
-			{
-				if (sign < 0)
-					res *= -1;
-				break;
-			}
-		}
+		else if (num > 0)
+			break;
 	}
-	return (res);
+	return (res * sign);
 }

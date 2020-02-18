@@ -8,8 +8,8 @@ int _atoi(char *s)
 {
 	int i;
 	int n;
-	int res = 0;
 	int sign = 1;
+	unsigned int res;
 
 	for (n = 0; *(s + n) != '\0'; n++)
 	{

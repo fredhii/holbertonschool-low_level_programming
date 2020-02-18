@@ -18,8 +18,11 @@ int _atoi(char *s)
 		{
 			res = res * 10 + (*(s + n) - '0');
 			if (!(*(s + (n + 1)) >= '0' && *(s + (n + 1)) <= '9'))
+			{
+				if (sign == -1)
+					res *= -1;
 				break;
 		}
 	}
-	return (res * sign);
+	return (res);
 }

@@ -13,10 +13,13 @@ char *rot13(char *s)
 	for (i = 0; s[i] != '\0'; i++)
 	{
 		for (j = 0; dict[j] != '\0'; j++)
-                {
-                        if (s[i] == dict[j])
-                                s[i] = enco[j];
-                }
+		{
+			if (s[i] == dict[j])
+			{
+				s[i] = enco[j];
+				break;
+			}
+		}
 	}
 
 	return (s);

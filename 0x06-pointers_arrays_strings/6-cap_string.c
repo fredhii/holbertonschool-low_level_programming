@@ -16,7 +16,10 @@ char *cap_string(char *s)
 			for (j = 0; mark[j] != '\0'; j++)
 			{
 				if (i == 0)
+				{
 					s[i] -= 32;
+					break;
+				}
 				else if (s[i - 1] == mark[j])
 					s[i] -= 32;
 			}

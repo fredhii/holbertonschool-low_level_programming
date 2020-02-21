@@ -10,43 +10,43 @@
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int i, j, k, l, m, res, temp;
-	int num1 = 0, num2 = 0, remain = 0;
+	int num, i, j, k, l, m, sum, remain, num1, num2;
 
-	for (i = 0; n1[i] != '\0'; i++)
-	{}
-	for (j = 0; n2[j] != '\0'; j++)
-	{}
+	i = l = j = k = remain =  0;
+	while (n1[i] != '\0')
+		i++;
+	while (n2[j] != '\0')
+		j++;
 	if (i + 2 > size_r || j + 2 > size_r)
 		return (0);
-	i--;
-	j--;
-	for (k = 0; i >= 0 || j >= 0; i--, j--, k++)
+	i = i - 1;
+	j = j - 1;
+	while (i >= 0 || j >= 0)
 	{
+		num1 = num2 = 0;
 		if (i >= 0)
-			num1 = n1[i] - '0';
+			num1 = n1[i--] - '0';
 		if (j >= 0)
-			num2 = n2[j] - '0';
-
-		res = num1 + num2 + remain;
-		if (res > 9)
+			num2 = n2[j--] - '0';
+		sum = num1 + num2 + remain;
+		if (sum > 9)
 		{
 			remain = 1;
-			res -= 10;
+			sum = sum - 10;
 		}
 		else
 			remain = 0;
-		r[k] = (res + '0');
+		r[k++] = (sum + '0');
 	}
 	if (remain == 1)
 		r[k++] = (1 + '0');
 	m = k;
-	k -= 1;
+	k = k - 1;
 	for (l = 0; l < k; l++, k--)
 	{
-		temp = r[k];
+		num = r[k];
 		r[k] = r[l];
-		r[l] = temp;
+		r[l] = num;
 	}
 	r[m] = '\0';
 	return (r);

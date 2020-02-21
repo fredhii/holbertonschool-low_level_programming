@@ -26,7 +26,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		if (i >= 0)
 			num1 = n1[i] - '0';
 		if (j >= 0)
-			num2 = n2[i] - '0';
+			num2 = n2[j] - '0';
 
 		res = num1 + num2 + remain;
 		if (res > 9)

@@ -7,23 +7,24 @@
  */
 char *_strstr(char *haystack, char *needle)
 {
-	const char *temp1, *temp2;
+	unsigned int i = 0, j = 0;
 
-	for (; *haystack ; haystack++)
+	while (haystack[i])
 	{
-		if (*haystack == *needle)
+		while (needle[j] && (haystack[i] == needle[0]))
 		{
-			temp1 = haystack;
-			temp2 = needle;
-			for (; *temp1; temp1++, temp2++)
-			{
-				if (*temp1 != *temp2)
-					break;
-			}
-			if (!*temp2)
-				return ((char *)haystack);
+			if (haystack[i + j] == needle[j])
+				j++;
+			else
+				break;
 		}
+		if (needle[j])
+		{
+			i++;
+			j = 0;
+		}
+		else
+			return (haystack + i);
 	}
-
 	return (0);
 }

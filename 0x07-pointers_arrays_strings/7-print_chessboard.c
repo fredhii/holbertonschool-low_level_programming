@@ -1,28 +1,19 @@
 #include "holberton.h"
 /**
- * _strstr - Locates a substring
- * @haystack: String to be scanned
- * @needle: String to match
- * Return: First ocurrence or null
+ * print_chessboard - Prints chessboard
+ * @a: board
+ * Return: none
  */
-char *_strstr(char *haystack, char *needle)
+void print_chessboard(char (*a)[8])
 {
-	int i, j, k, length;
-	for (length = 0; haystack[length] != '\0' ; length++)
-	{}
+	int i, j;
 
-	for (i = 0; i <= length ; i++)
+	for (i = 0; i < 8; i++)
 	{
-		haystack++;
-		if (haystack[i] == needle[0])
+		for (j = 0; j < 8; j++)
 		{
-			for (j = i, k = 0; needle[k] != '\0'; k++, j++)
-			{
-				if (needle[k] != haystack[j])
-					break;
-			}
+			_putchar(a[i][j]);
 		}
+		_putchar('\n');
 	}
-
-	return (haystack);
 }

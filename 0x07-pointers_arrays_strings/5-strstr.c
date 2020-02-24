@@ -7,22 +7,23 @@
  */
 char *_strstr(char *haystack, char *needle)
 {
-	int i, j, k, length;
-	for (length = 0; haystack[length] != '\0' ; length++)
-	{}
+	const char *temp1, *temp2;
 
-	for (i = 0; i <= length ; i++)
+	for (; *haystack ; haystack++)
 	{
-		haystack++;
-		if (haystack[i] == needle[0])
+		if (*haystack == *needle)
 		{
-			for (j = i, k = 0; needle[k] != '\0'; k++, j++)
+			temp1 = haystack;
+			temp2 = needle;
+			for (; *temp1; temp1++, temp2++)
 			{
-				if (needle[k] != haystack[j])
+				if (*temp1 != *temp2)
 					break;
 			}
+			if (!*temp2)
+				return ((char *)haystack);
 		}
 	}
 
-	return (haystack);
+	return (0);
 }

@@ -44,7 +44,6 @@ int main(int argc, char **argv)
 			sum += 1;
 		}
 	}
-	printf("%i\n", change - 1);
-
+	n < 0 ? printf("%d\n", 0) : printf("%i\n", change - 1);
 	return (0);
 }

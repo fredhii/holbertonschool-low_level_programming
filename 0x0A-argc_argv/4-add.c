@@ -21,7 +21,13 @@ int main(int argc, char **argv)
 				err = 1;
 		}
 	}
-	err == 0 ? printf("%i\n", res) : printf("Error\n");
+	if (err == 0)
+		printf("%i\n", res);
+	else
+	{
+		printf("Error\n");
+		return (1);
+	}
 
 	return (0);
 }

@@ -8,18 +8,16 @@
  */
 char *str_concat(char *s1, char *s2)
 {
-	int i, j, k, l;
+	int i, k, l;
 	char *new_str;
 
 	if (s2 == NULL)
 	{
-		s2 = malloc(1);
-		*s2 = '\0';
+		s2 = "";
 	}
 	if (s1 == NULL)
 	{
-		s1 = malloc(1);
-		*s1 = '\0';
+		s1 = "";
 	}
 	for (k = 0; s1[k]; k++)
 	{}
@@ -34,11 +32,10 @@ char *str_concat(char *s1, char *s2)
 		new_str[i] = *s1;
 		s1++;
 	}
-	for (j = 0; *s2; j++, i++)
+	for (; *s2; i++)
 	{
 		new_str[i] = *s2;
 		s2++;
 	}
-
 	return (new_str);
 }

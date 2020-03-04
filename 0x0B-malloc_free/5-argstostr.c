@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "holberton.h"
 /**
  * argstostr - Concatenate arguments
@@ -17,10 +18,13 @@ char *argstostr(int ac, char **av)
 	for (i = 0; i < ac; i++)
 	{
 		for (length = 0; av[i][length]; length++)
-		{}
+			;
+		length++;
 		size += length;
 	}
-	concat = malloc(size);
+
+	concat = malloc(sizeof(char) * size);
+
 	if (concat == NULL)
 		return (NULL);
 
@@ -32,6 +36,7 @@ char *argstostr(int ac, char **av)
 		}
 		concat[m++] = '\n';
 	}
+	concat[m] = '\0';
 
 	return (concat);
 }

@@ -35,14 +35,15 @@ char *argstostr(int ac, char **av)
 
 	for (k = 0; k < ac; k++)
 	{
-		for (l = 0; av[k][l] != '\0'; l++, m++)
+		for (l = 0; av[k][l]; l++)
 		{
 			concat[m] = av[k][l];
+			m++;
 		}
-		concat[m++] = '\n';
+		concat[m] = '\n';
+		m++;
 	}
 	concat[m] = '\0';
-	if (!concat)
-		return (NULL);
+
 	return (concat);
 }

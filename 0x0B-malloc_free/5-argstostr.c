@@ -2,6 +2,15 @@
 #include <stdio.h>
 #include "holberton.h"
 /**
+ * _strlen - Prints string length
+ * @s: String
+ * Return: String length
+ */
+int _strlen(char *s)
+{
+	return (*s ? 1 + _strlen(s + 1) : 0);
+}
+/**
  * argstostr - Concatenate arguments
  * @ac: Number of arguments
  * @av: Arguments content
@@ -9,7 +18,7 @@
  */
 char *argstostr(int ac, char **av)
 {
-	int i, length, size = 0, k, l, m = 0;
+	int i, size = 1, k, l, m = 0;
 	char *concat;
 
 
@@ -18,14 +27,9 @@ char *argstostr(int ac, char **av)
 
 	for (i = 0; i < ac; i++)
 	{
-		for (length = 0; av[i][length]; length++)
-			;
-		length++;
-		size += length;
+		size += _strlen(av[i]);
 	}
-
 	concat = malloc(sizeof(char) * size);
-
 	if (concat == NULL)
 		return (NULL);
 

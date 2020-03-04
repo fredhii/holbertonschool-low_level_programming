@@ -12,6 +12,7 @@ char *argstostr(int ac, char **av)
 	int i, length, size = 0, k, l, m = 0;
 	char *concat;
 
+
 	if (ac == 0 || av == NULL)
 		return (NULL);
 
@@ -37,6 +38,7 @@ char *argstostr(int ac, char **av)
 		concat[m++] = '\n';
 	}
 	concat[m] = '\0';
-
+	if (!concat)
+		return (NULL);
 	return (concat);
 }

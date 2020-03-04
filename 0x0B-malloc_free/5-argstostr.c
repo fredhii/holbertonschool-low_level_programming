@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include "holberton.h"
 /**
  * _strlen - Prints string length
@@ -18,7 +17,7 @@ int _strlen(char *s)
  */
 char *argstostr(int ac, char **av)
 {
-	int i, size = 1, k, l, m = 0;
+	int i, size = 0, k, l, m = 0;
 	char *concat;
 
 

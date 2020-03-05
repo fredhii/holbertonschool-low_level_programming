@@ -48,7 +48,7 @@ char *validate_one(char *s1, char *s2, char *new_str, unsigned int n)
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *new_str;
-	unsigned int len_s1, len_s2;
+	unsigned int len_s1;
 
 	if (s1 == NULL)
 	{
@@ -60,9 +60,8 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	}
 
 	len_s1 = _strlen(s1);
-	len_s2 = _strlen(s2);
 
-	new_str = malloc(sizeof(char) * (len_s1 + len_s2 + 1));
+	new_str = malloc(len_s1 + (n * sizeof(*s2) + 1) * sizeof(*new_str));
 	if (new_str == NULL)
 	{
 		free(new_str);

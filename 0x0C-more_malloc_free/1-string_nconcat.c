@@ -33,19 +33,9 @@ char *validate_one(char *s1, char *s2, char *new_str, unsigned int n,
 		s1++;
 	}
 
-	if (n > len_s2)
-	{
-		for (; *s2; i++)
-		{
-			new_str[i] = *s2;
-			s2++;
-		}
-	}
-	else
-	{
-		for (j = 0; j < n; j++, i++)
-			new_str[i] = s2[j];
-	}
+	for (j = 0; s2[j] != '\0' && j < n; j++, i++)
+		new_str[i] = s2[j];
+
 	new_str[i] = '\0';
 
 	return (new_str);

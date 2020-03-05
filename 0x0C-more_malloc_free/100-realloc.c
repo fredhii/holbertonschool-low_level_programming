@@ -13,6 +13,11 @@ char *saved_data(char *previous)
 	for (size = 0; previous[size] != '\0'; size++)
 		;
 	new = malloc(sizeof(char) * size);
+	if (new == NULL)
+	{
+		free(new);
+		return (NULL);
+	}
 
 	for (i = 0; *previous; i++)
 	{
@@ -49,7 +54,7 @@ char *restore_data(char *s1, char *s2)
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	char *backup;
+	void *backup;
 
 	if (old_size == new_size)
 		return (ptr);
@@ -65,6 +70,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		ptr = malloc(new_size);
 		if (ptr == NULL)
 		{
+			free(ptr);
 			return (NULL);
 		}
 		ptr = restore_data(ptr, backup);
@@ -74,7 +80,10 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	{
 		ptr = malloc(new_size);
 		if (ptr == NULL)
+		{
+			free(ptr);
 			return (NULL);
+		}
 	}
 
 	return (ptr);

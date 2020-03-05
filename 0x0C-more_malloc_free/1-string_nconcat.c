@@ -33,7 +33,7 @@ char *validate_one(char *s1, char *s2, char *new_str, unsigned int n,
 		s1++;
 	}
 
-	if (n >= len_s2)
+	if (n > len_s2)
 	{
 		for (; *s2; i++)
 		{

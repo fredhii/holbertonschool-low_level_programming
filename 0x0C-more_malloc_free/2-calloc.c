@@ -8,9 +8,10 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	char *new_memory;
+        char *new_memory;
+	int i;
 
-	if (size == 0)
+	if (size == 0 || nmemb == 0)
 		return (NULL);
 
 	new_memory = malloc(nmemb * size);
@@ -18,6 +19,8 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	{
 		return (NULL);
 	}
+	for (i = 0; new_memory[i] != '\0'; i++)
+		new_memory[i] = 0;
 
 	return (new_memory);
 }

@@ -76,7 +76,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	new_str = malloc(sizeof(char) * (len_s1 + len_s2 + 1));
 	if (new_str == NULL)
+	{
+		free(new_str);
 		return (NULL);
+	}
 
 	new_str = validate_one(s1, s2, new_str, n, len_s2);
 

@@ -19,11 +19,9 @@ int _strlen(char *s)
  * @s2: string two
  * @new_str: string to place string one and two
 ¨* @n: limit of string two
- * @len_s2: length of string two
  * Return: concatened string.
  */
-char *validate_one(char *s1, char *s2, char *new_str, unsigned int n,
-		  unsigned int len_s2)
+char *validate_one(char *s1, char *s2, char *new_str, unsigned int n)
 {
 	unsigned int i, j;
 
@@ -71,7 +69,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		return (NULL);
 	}
 
-	new_str = validate_one(s1, s2, new_str, n, len_s2);
+	new_str = validate_one(s1, s2, new_str, n);
 
 	return (new_str);
 }

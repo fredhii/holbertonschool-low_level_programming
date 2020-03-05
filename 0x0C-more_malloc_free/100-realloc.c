@@ -24,7 +24,7 @@ char *saved_data(char *previous)
 		new[i] = *previous;
 		previous++;
 	}
-
+	free(previous);
 	return (new);
 }
 /**

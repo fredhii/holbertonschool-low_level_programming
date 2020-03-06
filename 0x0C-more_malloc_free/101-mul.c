@@ -33,6 +33,17 @@ int _isdigit(char *c)
 	return (0);
 }
 /**
+ * check_zero - Check if array has plenty zeros.
+ * @zeros: Array to check
+ * Return: 1 or 0.
+ */
+int check_zero(char *zeros)
+{
+	if (zeros[0] == 0 && zeros[1] == 0 && zeros[1] == 0)
+		return (1);
+	return (0);
+}
+/**
  * main - Multiplies two numbers.
  * @ac: Arguments number
  * @av: Array containing arguments
@@ -72,8 +83,11 @@ int main(int ac, char **av)
 		}
 	}
 	i = f_res[0] == 0 ? 1 : 0;
-	for (; i < total_size; i++)
-		_putchar(f_res[i] + '0');
+	if (check_zero(f_res) == 1)
+		_putchar('0');
+	else
+		for (; i < total_size; i++)
+			_putchar(f_res[i] + '0');
 	_putchar('\n');
 	free(f_res);
 	return (0);

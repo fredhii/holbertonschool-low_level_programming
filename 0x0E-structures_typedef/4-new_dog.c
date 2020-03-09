@@ -1,17 +1,30 @@
 #include <stdlib.h>
 #include "dog.h"
 /**
- * _strlen - measure string length.
- * @s: value to size.
- * Return: string length.
+ * _strdup - Duplicates a string
+ * @str: string to duplicate
+ * Return: pointer to new string
  */
-int _strlen(char *s)
+char *_strdup(char *str)
 {
-	int count;
+	int i, length;
+	char *new_str;
 
-	for (count = 0; *(s + count); count++)
-		;
-	return (count);
+	if (str == NULL)
+		return (NULL);
+
+	for (length = 0; str[length]; length++)
+	{}
+	new_str = malloc(sizeof(char) * length + 1);
+	if (new_str == NULL)
+		return (NULL);
+
+	for (i = 0; *str; i++)
+	{
+		new_str[i] = *str;
+		str++;
+	}
+	return (new_str);
 }
 /**
  * new_dog - Creates a new dog.
@@ -22,7 +35,6 @@ int _strlen(char *s)
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	char *name_2, *owner_2;
 	dog_t *dog_n;
 
 	dog_n = malloc(sizeof(dog_t));
@@ -31,26 +43,10 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(dog_n);
 		return (NULL);
 	}
-	name_2 = malloc(sizeof(char) * _strlen(name));
-	if (name_2 == NULL)
-	{
-		free(name_2);
-		free(dog_n);
-		return (NULL);
-	}
-	owner_2 = malloc(sizeof(char) * _strlen(owner));
-	if (owner_2 == NULL)
-	{
-		free(owner_2);
-		free(name_2);
-		free(dog_n);
-		return (NULL);
-	}
-	name_2 = name;
-	owner_2 = owner;
-	(*dog_n).name = name_2;
-	(*dog_n).age = age;
-	(*dog_n).owner = owner_2;
+
+	dog_n->name = _strdup(name);
+	dog_n->age = age;
+	dog_n->owner = _strdup(owner);
 
 	return (dog_n);
 }

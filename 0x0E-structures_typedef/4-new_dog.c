@@ -7,23 +7,30 @@
  */
 char *_strdup(char *str)
 {
-	int i, length;
-	char *new_str;
+	int c = 0, s = 0;
+
+	char *d;
 
 	if (str == NULL)
 		return (NULL);
-
-	for (length = 0; str[length]; length++)
-	{}
-	new_str = malloc(sizeof(char) * length + 1);
-	if (new_str == NULL)
-		return (NULL);
-	for (i = 0; *str; i++)
+	while (str[s] != '\0')
 	{
-		new_str[i] = *str;
-		str++;
+		s++;
+		c++;
 	}
-	return (new_str);
+	c = 0;
+	d = malloc(sizeof(char) * (s + 1));
+	if (d == NULL)
+		return (NULL);
+	while (c < (s + 1))
+	{
+		d[c] = str[c];
+		c++;
+	}
+
+	if (str == NULL)
+		return (NULL);
+	return (d);
 }
 /**
  * new_dog - Creates a new dog.
@@ -45,7 +52,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(owner_copy);
 		return (NULL);
 	}
-	dog_n = malloc(sizeof(struct dog));
+	dog_n = malloc(sizeof(dog_t));
 	if (dog_n == NULL)
 	{
 		free(name_copy);

@@ -45,12 +45,11 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(owner_copy);
 		return (NULL);
 	}
-	dog_n = malloc(sizeof(dog_t));
+	dog_n = malloc(sizeof(struct dog));
 	if (dog_n == NULL)
 	{
 		free(name_copy);
 		free(owner_copy);
-		free(dog_n);
 		return (NULL);
 	}
 	dog_n->name = name_copy;

@@ -25,12 +25,8 @@ int main(int ac, char **av)
 		exit(2);
 	}
 	hex = (unsigned char *)main;
-	for (i = 0; i < bytes; i++)
-	{
-		printf("%.2x", hex[i]);
-		if (i < bytes)
-			putchar(' ');
-	}
-	putchar('\n');
+	for (i = 0; i < bytes - 1; i++)
+		printf("%02hhx ", hex[i]);
+	printf("%02hhx\n", hex[i]);
 	return (0);
 }

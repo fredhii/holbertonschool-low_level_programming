@@ -44,7 +44,7 @@ int p_str(va_list lista)
 	if (!str)
 	{
 		printf("(nil)");
-		return (0);
+		return;
 	}
 	printf("%s", str);
 	return (0);

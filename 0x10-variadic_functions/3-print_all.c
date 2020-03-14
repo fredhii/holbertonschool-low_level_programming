@@ -6,48 +6,41 @@
  * @lista: Char to be printed
  * Return: 0.
  */
-int p_char(va_list lista)
+void p_char(va_list lista)
 {
 	printf("%c", va_arg(lista, int));
-	return (0);
 }
 /**
  * p_int - Prints integer.
  * @lista: Integer to be printed
  * Return: 0.
  */
-int p_int(va_list lista)
+void p_int(va_list lista)
 {
 	printf("%i", va_arg(lista, int));
-	return (0);
 }
 /**
  * p_float - Prints float.
  * @lista: Float to be printed
  * Return: 0.
  */
-int p_float(va_list lista)
+void p_float(va_list lista)
 {
 	printf("%f", va_arg(lista, double));
-	return (0);
 }
 /**
  * p_str - Prints strings.
  * @lista: String to be printed
  * Return: 0.
  */
-int p_str(va_list lista)
+void p_str(va_list lista)
 {
 	char *str;
 
 	str = va_arg(lista, char*);
 	if (!str)
-	{
 		printf("(nil)");
-		return;
-	}
 	printf("%s", str);
-	return (0);
 }
 /**
  * print_all - Prints all.
@@ -64,7 +57,7 @@ void print_all(const char * const format, ...)
 	};
 	int i, j;
 	va_list all;
-	int (*ptr)();
+	void (*ptr)();
 	char *coma = "";
 
 	va_start(all, format);

@@ -14,7 +14,7 @@ void print_all(const char * const format, ...);
 typedef struct print
 {
 	char type;
-	int (*f)();
+        void (*f)();
 } p_all;
 
 #endif

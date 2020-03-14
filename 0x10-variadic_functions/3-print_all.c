@@ -47,6 +47,7 @@ int p_str(va_list lista)
 		return (0);
 	}
 	printf("%s", str);
+	return (0);
 }
 /**
  * print_all - Prints all.

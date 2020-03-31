@@ -55,8 +55,7 @@ int main(int ac, char **av)
 	readd = read(in_data, buffer, 1024);
 	out_data = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR |
 			S_IRGRP | S_IWGRP | S_IROTH);
-	while (readd > 0)
-	{
+	do {
 		if (in_data == -1 || readd == -1)
 		{
 			dprintf(STDERR_FILENO,
@@ -72,7 +71,7 @@ int main(int ac, char **av)
 		}
 		readd = read(in_data, buffer, 1024);
 		out_data = open(av[2], O_WRONLY | O_APPEND);
-	}
+	} while (readd > 0)
 	free(buffer);
 	closed(in_data);
 	closed(out_data);

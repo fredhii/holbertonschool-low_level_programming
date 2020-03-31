@@ -26,9 +26,9 @@ char *create_buffer(char *file)
  */
 void closed(int data)
 {
-	int closed = close(data);
+	int clos = close(data);
 
-	if (closed == -1)
+	if (clos == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", data);
 		exit(100);
@@ -42,7 +42,7 @@ void closed(int data)
  */
 int main(int ac, char **av)
 {
-	int in_data, out_data, readd = 1024, writee;
+	int in_data, out_data, readd, writee;
 	char *buffer;
 
 	if (ac != 3)

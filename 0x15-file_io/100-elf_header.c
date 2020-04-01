@@ -235,16 +235,18 @@ void print_entry(unsigned long int entry, unsigned char *class)
  * @av: Array of arguments passed.
  * Return: 0 on success.
  */
-int main(int __attribute__((__unused__)) ac, char **av)
+int main(int ac, char **av)
 {
 	Elf64_Ehdr *header;
 	int openn, readd;
 
+	if (ac != 2 || av[1] == NULL)
+	printf("Usage: %s elf_filename\n", av[0]), exit(98);
 	openn = open(av[1], O_RDONLY);
 	if (openn == -1)
 		printf("Error: Cannot read file %s\n", av[1]), exit(98);
 	header = malloc(sizeof(Elf64_Ehdr));
-	if (header == NULL)
+	if (!header)
 	{
 		printf("Error: No memory allocated for %s\n", av[1]);
 		closes_file(openn), exit(98);

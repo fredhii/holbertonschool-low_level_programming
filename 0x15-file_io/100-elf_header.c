@@ -14,7 +14,7 @@ void closes_file(int fil)
 {
 	if (close(fil) == -1)
 	{
-		printf("Error: Cannot close fd %d\n", fil);
+	        dprintf(STDERR_FILENO, "Error: Cannot close fd %d\n", fil);
 		exit(98);
 	}
 }
@@ -30,7 +30,8 @@ void check_file(unsigned char *rem)
 	for (i = 0; i < 4; i++)
 		if (rem[i] != 127 && rem[i] != 'E' &&
 		    rem[i] != 'L' && rem[i] != 'F')
-			printf("Error: Not ELF file\n"), exit(98);
+			dprintf(STDERR_FILENO, "Error: Not ELF file\n"),
+				exit(98);
 }
 /**
  * print_magic - Prints magic of ELF file.
@@ -241,14 +242,17 @@ int main(int ac, char **av)
 	int openn, readd;
 
 	if (ac != 2 || av[1] == NULL)
-	printf("Usage: %s elf_filename\n", av[0]), exit(98);
+		dprintf(STDERR_FILENO, "Usage: %s elf_filename\n",
+			av[0]), exit(98);
 	openn = open(av[1], O_RDONLY);
 	if (openn == -1)
-		printf("Error: Cannot read file %s\n", av[1]), exit(98);
+		dprintf(STDERR_FILENO, "Error: Cannot read file %s\n",
+			av[1]), exit(98);
 	header = malloc(sizeof(Elf64_Ehdr));
 	if (!header)
 	{
-		printf("Error: No memory allocated for %s\n", av[1]);
+		dprintf(STDERR_FILENO, "Error: No memory allocated for %s\n",
+			av[1]);
 		closes_file(openn), exit(98);
 	}
 	readd = read(openn, header, sizeof(Elf64_Ehdr));

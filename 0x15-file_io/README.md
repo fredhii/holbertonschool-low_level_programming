@@ -11,3 +11,4 @@ Excersices to learn system inputs and outputs.
 | [2-append_text_to_file.c](./2-append_text_to_file.c) | Appends text at the end of a file |
 | [3-cp.c](./3-cp.c) | Copies the content of a file to another file |
 | [holberton.h](./holberton.h) | Custom Library |
+| [100-elf_header.c](./100-elf_header.c) | Display heade information contained in ELF file |

@@ -235,7 +235,7 @@ void print_entry(unsigned long int entry, unsigned char *class)
  * @av: Array of arguments passed.
  * Return: 0 on success.
  */
-int main(int ac, char **av)
+int main(int __attribute__((__unused__)) ac, char **av)
 {
 	Elf64_Ehdr *header;
 	int openn, readd;

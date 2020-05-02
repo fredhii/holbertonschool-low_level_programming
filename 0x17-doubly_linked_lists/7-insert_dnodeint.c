@@ -1,26 +1,6 @@
 #include "lists.h"
 
 /**
- * create_dnode - Allocates memory for node
- * @n: Number to insert in node
- * Return: Pointer to new node
- */
-dlistint_t *create_dnode(const int n)
-{
-	dlistint_t *new = NULL;
-
-	new = malloc(sizeof(dlistint_t));
-	if (!new)
-		return (NULL);
-
-	new->next = NULL;
-	new->prev = NULL;
-	new->n = n;
-
-	return (new);
-}
-
-/**
  * insert_dnodeint_at_index - Insert new node.
  * @h: Double linked list.
  * @idx: Position
@@ -29,42 +9,31 @@ dlistint_t *create_dnode(const int n)
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	dlistint_t *new = NULL, *tmp = NULL;
-	unsigned int i = 0;
+	dlistint_t *tmp = NULL, *new = *h;
+	unsigned int i;
 
-	new = create_dnode(n);
-	if (!new)
+	if (idx == 0)
+		return (add_dnodeint(h, n));
+	if (!*h || n < 0)
 		return (NULL);
-	if (!h || !(*h))
-		*h = new;
-	else
+	tmp = malloc(sizeof(dlistint_t));
+	if (!tmp)
+		return (NULL);
+	tmp->n = n;
+	for (i = 0; new; i++)
 	{
-		tmp = *h;
-		while (idx != i++ && tmp->next)
-			tmp = tmp->next;
-		if (tmp->next)
-			new->prev = tmp->prev;
-		else
-			new->prev = tmp;
 		if (idx == i)
 		{
+			tmp->prev = new->prev;
 			tmp->next = new;
 			new->prev = tmp;
+			tmp->prev->next = tmp;
+			return (tmp);
 		}
-		else if (idx == i - 1)
-		{
-			if (tmp->prev)
-				tmp->prev->next = new;
-			else
-				*h = new;
-			tmp->prev = new;
-			new->next = tmp;
-		}
-		else
-		{
-			free(new);
-			return (NULL);
-		}
+		if (!new->next && idx == i + 1)
+			return (free(tmp), add_dnodeint_end(h, n));
+		new = new->next;
 	}
-	return (new);
+	free(tmp);
+	return (NULL);
 }

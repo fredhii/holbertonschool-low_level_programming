@@ -1,53 +1,53 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "stdio.h"
+#include "stdlib.h"
+#include "string.h"
 
 /**
- * main - Keygen for crackme #5
- * @ac: Arguments size
- * @av: Arguments array
- * Return: Returns 1
+ * main - Keygen for crackme 5.
+ * @ac: Number of arguments
+ * @av: Arguments pointer
+ * Return: 0 Success, -1 Failed.
  */
 int main(int ac, char **av)
 {
-	char *user = av[1];
-	char *c = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
-	char *password = malloc(100);
-	int f1, f2, f3, f4, f5, f6, clength, biggest, randnum;
-	unsigned int i;
-	char tempf5;
-	long int multi;
-	signed char squeeze;
+	int i, size;
+	char *s = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
+	char *password;
+	int f1, f2, f3, f4, f5, f6;
 
 	(void) ac;
-	f2 = 0, f3 = 1;
-	clength = strlen(c) - 1;
-	f1 = (strlen(user) ^ 59) & clength;
-	password[0] = c[f1];
-	biggest = 0, f5 = 0, tempf5 = 0;
-	for (i = 0; i < strlen(user); i++)
-	{
-		if (user[i] > biggest)
-			biggest = user[i];
-		f2 += user[i];
-		f3 *= user[i];
-		multi = user[i] * user[i];
-		squeeze = multi;
-		tempf5 += squeeze;
-	}
-	f2 = (f2 ^ 79) & clength;
-	f3 = (f3 ^ 85) & clength;
-	srand(biggest ^ 14);
-	f4 = rand(), f4 = f4 & clength;
-	f5 = (tempf5 ^ 239) & clength;
-	for (i = 0; (int) i != user[0]; i++)
-		randnum = rand();
-	squeeze = randnum;
-	f6 = (squeeze ^ 229) & clength;
-	password[1] = c[f2], password[2] = c[f3];
-	password[3] = c[f4], password[4] = c[f5];
-	password[5] = c[f6], password[6] = '\0';
-
+	f1 = f2 = f5 = f6 = 0, f3 = 1;
+	password = malloc(100);
+	if (!password)
+		return (-1);
+	/* Define Char 1 */
+	size = strlen(av[1]);
+	f1 = (size ^ 59) & 63;
+	password[0] = s[f1];
+	/* Define Char 2 */
+	for (i = 0; i < size; i++)
+		f2 += av[1][i];
+	password[1] = s[(f2 ^ 79) & 63];
+	/* Define Char 3 */
+	for (i = 0; i < size; i++)
+		f3 *= av[1][i];
+	password[2] = s[(f3 ^ 85) & 63];
+	/* Define Char 4 */
+	for (i = 0; i < size; i++)
+		if (av[1][i] > f4)
+			f4 = av[1][i];
+	srand(f4 ^ 14);
+	f4 = rand(), f4 = f4 & 63;
+	password[3] = s[f4];
+	/* Define Char 5 */
+	for (i = 0; i < size; i++)
+		f5 += av[1][i] * av[1][i];
+	password[4] = s[(f5 ^ 239) & 63];
+	/* Define Char 6 */
+	for (i = 0; i < av[1][0]; i++)
+		f6 = rand();
+	password[5] = s[(f6 ^ 229) & 63];
+	password[6] = '\0';
 	printf("%s\n", password);
-	return (1);
+	return (0);
 }

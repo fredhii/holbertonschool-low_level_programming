@@ -1,3 +1,3 @@
 #!/bin/bash
-wget -q -O /tmp/librandy1.so https://github.com/ianliu-johnston/BatchScripts/raw/master/librandy1.so
+wget -q -O /tmp/jackpoint.so https://github.com/fredhii/holbertonschool-low_level_programming/blob/master/0x18-dynamic_libraries/jackpoint.so
 export LD_PRELOAD=/tmp/jackpoint.so

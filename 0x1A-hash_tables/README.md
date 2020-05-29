@@ -10,7 +10,7 @@
   <h3 align="center">0x1A. C - Hash tables</h3>
 
   <p align="center">
-        <em>Double linked lists</em>
+        <em>Hash Tables</em>
     <br /><br />
     <a href="https://github.com/fredhii/holbertonschool-low_level_programming/issues">Report Bug</a>
     ·

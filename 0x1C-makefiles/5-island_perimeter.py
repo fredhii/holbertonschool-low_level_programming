@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 """ Define a function that gets an island perimeter """
 
+
 def island_perimeter(grid):
     """ return island perimeter """
-    h = len(grid) # Grid heigth
-    w = len(grid[0]) # Grid width
-    aux1 = 0
-    aux2 = 0
+    h = len(grid)  # Grid heigth
+    w = len(grid[0])  # Grid width
+    aux1 = 0  # Save all number ones in grid
+    aux2 = 0  # increase if there is a 1 before a current 1
 
     for i in range(h):
         for j in range(w):
